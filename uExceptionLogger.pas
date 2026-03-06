@@ -5,6 +5,9 @@ interface
 uses
   System.SysUtils, Vcl.Forms, uLogTypes;
 
+const
+  FDaysPurgeLog: integer = 7;
+
 type
   TExceptionLogger = class
   private
@@ -139,7 +142,7 @@ begin
     Disp.Enqueue(Item);
     try
       TLocalLogHelper.SaveExceptionFiles(Item);
-      TLocalLogHelper.PurgeOldLogs(7);
+      TLocalLogHelper.PurgeOldLogs( FDaysPurgeLog );
     except
       // ignore
     end;
@@ -181,7 +184,7 @@ begin
     begin
       try
         TLocalLogHelper.SaveExceptionFiles(Item);
-        TLocalLogHelper.PurgeOldLogs(7);
+        TLocalLogHelper.PurgeOldLogs( FDaysPurgeLog );
       except
         // ignore
       end;

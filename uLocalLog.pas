@@ -116,7 +116,8 @@ begin
         SL.Add('==============================================================================');
         SL.Add('Data/Hora: ' + DateTimeToStr(Item.TimestampUTC));
         SL.Add('Host: ' + Item.MachineName );
-        SL.Add('Usuario: ' + Item.UserName);
+        SL.Add('Usuario SO: ' + Item.UserName);
+        SL.Add('Usuário: ' + Item.UserLogged);
         SL.Add('ERP: ' + Item.ERPVersion);
         SL.AdD('Modulo: ' + Item.ModuleName);
         SL.Add('Classe: ' + Item.ExceptionClass);

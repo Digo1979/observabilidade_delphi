@@ -17,13 +17,14 @@ type
     class var FERPVersion: string;
     class var FCompanyName: string;
     class var FBranchId: string;
+    class var FUserLogged: string;
     class var FPrevOnException: TExceptionEvent;
     class function GetMachineName: string; static;
     class function GetUserName: string; static;
     class function GetModuleName: string; static;
   public
     class procedure Initialize(const GraylogHost: string; GraylogPort: Integer; const ERPVersion, CompanyName,
-      BranchId: string; Protocol: TTransportProtocol = tpUDP);
+      BranchId, UserLogged: string; Protocol: TTransportProtocol = tpUDP);
     class procedure FinalizeLogger;
     class procedure HandleException(Sender: TObject; E: Exception);
     class procedure LogMessage(const Level: TLogLevel; const ShortMsg, FullMsg: string);
@@ -69,7 +70,7 @@ begin
 end;
 
 class procedure TExceptionLogger.Initialize(const GraylogHost: string; GraylogPort: Integer;
-  const ERPVersion, CompanyName, BranchId: string; Protocol: TTransportProtocol);
+  const ERPVersion, CompanyName, BranchId, UserLogged: string; Protocol: TTransportProtocol);
 var
   Client: TGraylogClient;
   Dispatcher: TLogDispatcher;
@@ -79,6 +80,7 @@ begin
     FERPVersion := ERPVersion;
     FCompanyName := CompanyName;
     FBranchId := BranchId;
+    FUserLogged := UserLogged;
     TStackTraceHelper.Initialize;
     Client := TGraylogClient.Create(GraylogHost, GraylogPort, Protocol);
     Client.ConfigureTimeouts(400, 400);

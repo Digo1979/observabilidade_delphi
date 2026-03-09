@@ -27,6 +27,7 @@ type
     StackTrace: string;
     ScreenshotBase64: string;
     UserName: string;
+    UserLogged: string;
     MachineName: string;
     ERPVersion: string;
     ModuleName: string;
@@ -59,6 +60,7 @@ begin
   Result.StackTrace := StackTrace;
   Result.ScreenshotBase64 := ScreenshotBase64;
   Result.UserName := UserName;
+  Result.UserLogged := UserLogged;
   Result.MachineName := MachineName;
   Result.ERPVersion := ERPVersion;
   Result.ModuleName := ModuleName;
